@@ -1,0 +1,41 @@
+/*
+ * Main navigation
+ *
+ * Turn the `.navbar` at the top of the docs purple.
+ */
+
+.home-nav {
+  text-shadow: 0 -1px 0 rgba(0,0,0,.15);
+  background-color: #563d7c;
+  border-color: #463265;
+  box-shadow: 0 1px 0 rgba(255,255,255,.1);
+}
+.home-nav  .navbar-collapse {
+  border-color: #463265;
+}
+.home-nav  .navbar-brand {
+  color: #fff;
+}
+.home-nav  .navbar-nav > li > a {
+  color: #cdbfe3;
+}
+.home-nav  .navbar-nav > li > a:hover {
+  color: #fff;
+}
+.home-nav  .navbar-nav > .active > a,
+.home-nav  .navbar-nav > .active > a:hover {
+  color: #fff;
+  background-color: #463265;
+}
+.home-nav  .navbar-toggle {
+  border-color: #563d7c;
+}
+.home-nav  .navbar-toggle:hover {
+  background-color: #463265;
+  border-color: #463265;
+}
+.home-nav  .navbar-nav>.open>a, 
+.home-nav  .navbar-nav>.open>a:hover, 
+.home-nav   .navbar-nav>.open>a:focus{
+	background-color:#463265;
+}
