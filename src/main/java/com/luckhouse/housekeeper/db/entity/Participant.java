@@ -2,14 +2,16 @@ package com.luckhouse.housekeeper.db.entity;
 
 // Generated Mar 29, 2014 11:15:14 PM by Hibernate Tools 3.4.0.CR1
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -45,8 +47,8 @@ public class Participant implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id", nullable = false)
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "userId", nullable = false)
 	public User getUser() {
 		return this.user;
 	}
@@ -56,7 +58,7 @@ public class Participant implements java.io.Serializable {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "spending_id", nullable = false)
+	@JoinColumn(name = "tallyId", nullable = false)
 	public Tally getTally() {
 		return this.tally;
 	}

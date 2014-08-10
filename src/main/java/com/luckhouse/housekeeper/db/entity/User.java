@@ -25,6 +25,9 @@ public class User implements java.io.Serializable {
 	private String username;
 	private String password;
 	private String email;
+	private String firstname;
+	private String lastname;
+	private String fullname;
 
 	public User() {
 	}
@@ -76,5 +79,32 @@ public class User implements java.io.Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	@Column(name = "firstname")
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	@Column(name = "lastname")
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	@Column(name = "fullname")
+	public String getFullname() {
+		return fullname;
+	}
+
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
 	}
 }

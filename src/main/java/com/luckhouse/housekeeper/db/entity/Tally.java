@@ -11,7 +11,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,11 +31,11 @@ public class Tally implements java.io.Serializable {
 	private static final long serialVersionUID = 5347211042966421892L;
 	private Integer id;
 	private Date payDate;
-	private String desc;
+	private String description;
 	private Integer totalExpenses;
 	private boolean isFromDormitoryFee;
 	private String comment;
-	private String payerId;
+	private User payer;
 	private Date createDate;
 	private Date updateDate;
 	private Integer createBy;
@@ -47,16 +49,16 @@ public class Tally implements java.io.Serializable {
 		this.isFromDormitoryFee = isFromDormitoryFee;
 	}
 
-	public Tally(Date payDate, String desc, Integer totalExpenses,
-			boolean isFromDormitoryFee, String comment, String payerId,
+	public Tally(Date payDate, String description, Integer totalExpenses,
+			boolean isFromDormitoryFee, String comment, User payer,
 			Date createDate, Date updateDate, Integer createBy,
 			Integer updateBy, Set<Participant> participants) {
 		this.payDate = payDate;
-		this.desc = desc;
+		this.description = description;
 		this.totalExpenses = totalExpenses;
 		this.isFromDormitoryFee = isFromDormitoryFee;
 		this.comment = comment;
-		this.payerId = payerId;
+		this.payer = payer;
 		this.createDate = createDate;
 		this.updateDate = updateDate;
 		this.createBy = createBy;
@@ -76,7 +78,7 @@ public class Tally implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "pay_date", length = 10)
+	@Column(name = "payDate", length = 10)
 	public Date getPayDate() {
 		return this.payDate;
 	}
@@ -85,16 +87,16 @@ public class Tally implements java.io.Serializable {
 		this.payDate = payDate;
 	}
 
-	@Column(name = "desc")
-	public String getDesc() {
-		return this.desc;
+	@Column(name = "description")
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	@Column(name = "total_expenses")
+	@Column(name = "totalExpenses")
 	public Integer getTotalExpenses() {
 		return this.totalExpenses;
 	}
@@ -120,14 +122,15 @@ public class Tally implements java.io.Serializable {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-
-	@Column(name = "payerId")
-	public String getPayerId() {
-		return this.payerId;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "payerId", nullable = false)
+	public User getPayer() {
+		return this.payer;
 	}
 
-	public void setPayerId(String payerId) {
-		this.payerId = payerId;
+	public void setPayer(User payer) {
+		this.payer = payer;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
