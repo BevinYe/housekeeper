@@ -18,7 +18,7 @@ public class BeanFactory {
 		tallyBean.setTotalExpenses(tally.getTotalExpenses());
 		tallyBean.setComment(tally.getComment());
 		tallyBean.setDesc(tally.getDescription());
-		tallyBean.setFromDormitoryFee(tally.getIsFromDormitoryFee());
+		tallyBean.setTallyType(tally.getTallytype()!=null?tally.getTallytype().getType():"");
 		if(tally.getPayer()!=null){
 			tallyBean.setPayerName(tally.getPayer().getUsername());
 		}
@@ -33,10 +33,8 @@ public class BeanFactory {
 		for (Participant participant : tally.getParticipants()) {
 			User user = participant.getUser();
 			if(user!=null){
-				if(user.getFullname()!=null){
-					participants.add(user.getFullname());
-				}else if(user.getFirstname()!=null&&user.getLastname()!=null){
-					participants.add(user.getFirstname()+" "+user.getLastname());
+				if(user.getDisplayName()!=null){
+					participants.add(user.getDisplayName());
 				}else{
 					participants.add(user.getUsername());
 				}

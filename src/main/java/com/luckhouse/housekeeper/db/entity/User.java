@@ -1,6 +1,6 @@
 package com.luckhouse.housekeeper.db.entity;
 
-// Generated Mar 29, 2014 11:15:14 PM by Hibernate Tools 3.4.0.CR1
+// Generated 2014-8-10 16:26:15 by Hibernate Tools 3.4.0.CR1
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -16,31 +16,29 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user", catalog = "housekeeper")
 public class User implements java.io.Serializable {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -1485359029409258461L;
 	private Integer id;
-	private String username;
-	private String password;
 	private String email;
-	private String firstname;
-	private String lastname;
-	private String fullname;
+	private String displayName;
+	private String password;
+	private String username;
 
 	public User() {
 	}
 
-	public User(String username, String password) {
-		this.username = username;
+	public User(String password, String username) {
 		this.password = password;
+		this.username = username;
 	}
-
-	public User(String username, String password, String email) {
-		this.username = username;
-		this.password = password;
+	public User(Integer id, String email, String displayName, String password,
+			String username) {
+		super();
+		this.id = id;
 		this.email = email;
+		this.displayName = displayName;
+		this.password = password;
+		this.username = username;
 	}
 
 	@Id
@@ -54,13 +52,22 @@ public class User implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "username", nullable = false)
-	public String getUsername() {
-		return this.username;
+	@Column(name = "email")
+	public String getEmail() {
+		return this.email;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	@Column(name = "displayName")
+	public String getDisplayName() {
+		return this.displayName;
+	}
+
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
 	}
 
 	@Column(name = "password", nullable = false)
@@ -72,39 +79,12 @@ public class User implements java.io.Serializable {
 		this.password = password;
 	}
 
-	@Column(name = "email")
-	public String getEmail() {
-		return this.email;
+	@Column(name = "username", nullable = false)
+	public String getUsername() {
+		return this.username;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
-	@Column(name = "firstname")
-	public String getFirstname() {
-		return firstname;
-	}
-
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-
-	@Column(name = "lastname")
-	public String getLastname() {
-		return lastname;
-	}
-
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
-
-	@Column(name = "fullname")
-	public String getFullname() {
-		return fullname;
-	}
-
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 }

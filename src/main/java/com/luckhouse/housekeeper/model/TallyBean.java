@@ -11,7 +11,7 @@ public class TallyBean implements Serializable{
 	private Date payDate;
 	private String desc;
 	private Integer totalExpenses;
-	private boolean isFromDormitoryFee;
+	private String tallyType;
 	private String comment;
 	private String payerName;
 	private List<String> participants;
@@ -40,11 +40,11 @@ public class TallyBean implements Serializable{
 	public void setTotalExpenses(Integer totalExpenses) {
 		this.totalExpenses = totalExpenses;
 	}
-	public boolean isFromDormitoryFee() {
-		return isFromDormitoryFee;
+	public String getTallyType() {
+		return tallyType;
 	}
-	public void setFromDormitoryFee(boolean isFromDormitoryFee) {
-		this.isFromDormitoryFee = isFromDormitoryFee;
+	public void setTallyType(String tallyType) {
+		this.tallyType = tallyType;
 	}
 	public String getComment() {
 		return comment;
