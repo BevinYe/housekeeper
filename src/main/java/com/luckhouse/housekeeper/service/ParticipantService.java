@@ -7,7 +7,6 @@ import com.luckhouse.housekeeper.db.entity.Participant;
 import com.luckhouse.housekeeper.db.entity.Tallytype;
 import com.luckhouse.housekeeper.db.entity.User;
 
-
 public interface ParticipantService {
 	
 	List<User> getAllUsers();
